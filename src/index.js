@@ -4,21 +4,14 @@ require('dotenv').config();
  * Module dependencies.
  */
 
-const app = require('./app');
-const http = require('http');
+const { app, server } = require('./gameServer');
 
 /**
  * Get port from environment and store in Express.
  */
 
-const port = normalizePort(process.env.PORT || '3000');
+const port = normalizePort(process.env.PORT || '3003');
 app.set('port', port);
-
-/**
- * Create HTTP server.
- */
-
-const server = http.createServer(app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -85,5 +78,5 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
-  console.log('App started. Listening on ' + bind);
+  console.log('Game server is running on ' + bind);
 }
